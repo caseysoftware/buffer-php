@@ -15,8 +15,10 @@ class RequestHandler {
         $header = null;
 
         if ($type == 'form') {
+            // Encoding body into form-urlencoded format
             return $request->addPostFields($body);
         } else {
+            // Raw body
             return $request->setBody($body, $header);
         }
     }

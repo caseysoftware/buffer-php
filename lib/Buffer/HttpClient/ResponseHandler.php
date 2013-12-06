@@ -15,10 +15,10 @@ class ResponseHandler {
 
         // Response body is in JSON
         if ($response->isContentType('json')) {
-            $content = json_decode($body, true);
+            $tmp = json_decode($body, true);
 
             if (JSON_ERROR_NONE === json_last_error()) {
-                $body = $content;
+                $body = $tmp;
             }
         }
 

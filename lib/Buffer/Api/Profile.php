@@ -27,7 +27,7 @@ class Profile
      * '/profiles/:id' GET
      *
      */
-    public function get(array $options = array())
+    public function show(array $options = array())
     {
         $body = (isset($options['body']) ? $options['body'] : array());
 

@@ -18,26 +18,35 @@ class ErrorHandler
         $request = $event['request'];
         $response = $request->getResponse();
 
-        $content = ResponseHandler::getBody($response);
+        $message = null;
+        $code = $response->getStatusCode();
 
-        if ($response->isClientError() || $response->isServerError()) {
-            $error = null;
+        $body = ResponseHandler::getBody($response);
 
+        if ($response->isServerError()) {
+            throw new ClientException('Error '.$code, $code);
+        }
+
+        if ($response->isClientError()) {
             // If HTML, whole body is taken
-            if (gettype($content) == "string") {
-                $error = new ClientException($content, $response->getStatusCode());
+            if (gettype($body) == "string") {
+                $message = $body;
             }
 
             // If JSON, a particular field is taken and used
-            if ($response->isContentType('json') && is_array($content) && isset($content['error'])) {
-                $error = new ClientException($content['error'], $response->getStatusCode());
-            } else {
-                $error = new ClientException("Unable to select error message from json returned by request responsible for error", $response->getStatusCode());
+            if ($response->isContentType('json') && is_array($body)) {
+                if (isset($body['error'])) {
+                    $message = $body['error'];
+                } else {
+                    $message = "Unable to select error message from json returned by request responsible for error";
+                }
             }
 
-            if (empty($error)) {
-                $error = new \RuntimeException("Unable to understand the content type of response returned by request responsible for error", $response->getStatusCode());
+            if (empty($message)) {
+                $message = "Unable to understand the content type of response returned by request responsible for error";
             }
+
+            throw new ClientException($message, $code);
         }
     }
 }

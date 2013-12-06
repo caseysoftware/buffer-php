@@ -43,4 +43,20 @@ class User
         return $this->client->get("/profiles", $body, $options);
     }
 
+    /**
+     * Create one or more new status updates.
+     * '/updates/create' POST
+     *
+     * @param $text The status update text.
+     * @param $profile_ids An array of profile id’s that the status update should be sent to. Invalid profile_id’s will be silently ignored.
+     */
+    public function createUpdate($text, $profile_ids, array $options = array())
+    {
+        $body = (isset($options['body']) ? $options['body'] : array());
+        $body['text'] = $text;
+        $body['profile_ids'] = $profile_ids;
+
+        return $this->client->post("/updates/create", $body, $options);
+    }
+
 }

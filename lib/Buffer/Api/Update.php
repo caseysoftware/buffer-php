@@ -27,7 +27,7 @@ class Update
      * '/updates/:id' GET
      *
      */
-    public function get(array $options = array())
+    public function show(array $options = array())
     {
         $body = (isset($options['body']) ? $options['body'] : array());
 
@@ -44,22 +44,6 @@ class Update
         $body = (isset($options['body']) ? $options['body'] : array());
 
         return $this->client->get("/updates/".rawurlencode($this->id)."/interactions", $body, $options);
-    }
-
-    /**
-     * Create one or more new status updates.
-     * '/updates/create' POST
-     *
-     * @param $text The status update text.
-     * @param $profile_ids An array of profile id’s that the status update should be sent to. Invalid profile_id’s will be silently ignored.
-     */
-    public function create($text, $profile_ids, array $options = array())
-    {
-        $body = (isset($options['body']) ? $options['body'] : array());
-        $body['text'] = $text;
-        $body['profile_ids'] = $profile_ids;
-
-        return $this->client->post("/updates/create", $body, $options);
     }
 
     /**
