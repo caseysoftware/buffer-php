@@ -29,9 +29,11 @@ class Schedule
      */
     public function list(array $options = array())
     {
-        $body = (isset($options['body']) ? $options['body'] : array());
+        $body = (isset($options['query']) ? $options['query'] : array());
 
-        return $this->client->get("/profiles/".rawurlencode($this->id)."/schedules", $body, $options);
+        $response = $this->client->get('/profiles/'.rawurlencode($this->id).'/schedules', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
     /**
@@ -45,7 +47,9 @@ class Schedule
         $body = (isset($options['body']) ? $options['body'] : array());
         $body['schedules'] = $schedules;
 
-        return $this->client->post("/profiles/".rawurlencode($this->id)."/schedules/update", $body, $options);
+        $response = $this->client->post('/profiles/'.rawurlencode($this->id).'/schedules/update', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
 }

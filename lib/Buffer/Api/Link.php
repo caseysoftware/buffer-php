@@ -27,10 +27,12 @@ class Link
      */
     public function shares($url, array $options = array())
     {
-        $body = (isset($options['body']) ? $options['body'] : array());
+        $body = (isset($options['query']) ? $options['query'] : array());
         $body['url'] = $url;
 
-        return $this->client->get("/link/shares", $body, $options);
+        $response = $this->client->get('/link/shares', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
 }

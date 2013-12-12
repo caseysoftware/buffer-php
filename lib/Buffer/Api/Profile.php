@@ -29,9 +29,11 @@ class Profile
      */
     public function show(array $options = array())
     {
-        $body = (isset($options['body']) ? $options['body'] : array());
+        $body = (isset($options['query']) ? $options['query'] : array());
 
-        return $this->client->get("/profiles/".rawurlencode($this->id)."", $body, $options);
+        $response = $this->client->get('/profiles/'.rawurlencode($this->id).'', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
     /**
@@ -41,9 +43,11 @@ class Profile
      */
     public function pending(array $options = array())
     {
-        $body = (isset($options['body']) ? $options['body'] : array());
+        $body = (isset($options['query']) ? $options['query'] : array());
 
-        return $this->client->get("/profiles/".rawurlencode($this->id)."/updates/pending", $body, $options);
+        $response = $this->client->get('/profiles/'.rawurlencode($this->id).'/updates/pending', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
     /**
@@ -53,9 +57,11 @@ class Profile
      */
     public function sent(array $options = array())
     {
-        $body = (isset($options['body']) ? $options['body'] : array());
+        $body = (isset($options['query']) ? $options['query'] : array());
 
-        return $this->client->get("/profiles/".rawurlencode($this->id)."/updates/sent", $body, $options);
+        $response = $this->client->get('/profiles/'.rawurlencode($this->id).'/updates/sent', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
     /**
@@ -69,7 +75,9 @@ class Profile
         $body = (isset($options['body']) ? $options['body'] : array());
         $body['order'] = $order;
 
-        return $this->client->post("/profiles/".rawurlencode($this->id)."/updates/reorder", $body, $options);
+        $response = $this->client->post('/profiles/'.rawurlencode($this->id).'/updates/reorder', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
     /**
@@ -81,7 +89,9 @@ class Profile
     {
         $body = (isset($options['body']) ? $options['body'] : array());
 
-        return $this->client->post("/profiles/".rawurlencode($this->id)."/updates/shuffle", $body, $options);
+        $response = $this->client->post('/profiles/'.rawurlencode($this->id).'/updates/shuffle', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
 }

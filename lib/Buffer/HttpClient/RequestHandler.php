@@ -11,7 +11,7 @@ class RequestHandler {
 
     public static function setBody(RequestInterface $request, $body, $options)
     {
-        $type = isset($options['request_type']) ? $options['request_type'] : "form";
+        $type = isset($options['request_type']) ? $options['request_type'] : 'form';
         $header = null;
 
         if ($type == 'form') {

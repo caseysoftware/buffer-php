@@ -26,9 +26,11 @@ class Info
      */
     public function show(array $options = array())
     {
-        $body = (isset($options['body']) ? $options['body'] : array());
+        $body = (isset($options['query']) ? $options['query'] : array());
 
-        return $this->client->get("/info/configuration", $body, $options);
+        $response = $this->client->get('/info/configuration', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
 }

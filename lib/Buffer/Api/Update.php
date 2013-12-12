@@ -29,9 +29,11 @@ class Update
      */
     public function show(array $options = array())
     {
-        $body = (isset($options['body']) ? $options['body'] : array());
+        $body = (isset($options['query']) ? $options['query'] : array());
 
-        return $this->client->get("/updates/".rawurlencode($this->id)."", $body, $options);
+        $response = $this->client->get('/updates/'.rawurlencode($this->id).'', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
     /**
@@ -41,9 +43,11 @@ class Update
      */
     public function interactions(array $options = array())
     {
-        $body = (isset($options['body']) ? $options['body'] : array());
+        $body = (isset($options['query']) ? $options['query'] : array());
 
-        return $this->client->get("/updates/".rawurlencode($this->id)."/interactions", $body, $options);
+        $response = $this->client->get('/updates/'.rawurlencode($this->id).'/interactions', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
     /**
@@ -57,7 +61,9 @@ class Update
         $body = (isset($options['body']) ? $options['body'] : array());
         $body['text'] = $text;
 
-        return $this->client->post("/updates/".rawurlencode($this->id)."/update", $body, $options);
+        $response = $this->client->post('/updates/'.rawurlencode($this->id).'/update', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
     /**
@@ -69,7 +75,9 @@ class Update
     {
         $body = (isset($options['body']) ? $options['body'] : array());
 
-        return $this->client->post("/updates/".rawurlencode($this->id)."/share", $body, $options);
+        $response = $this->client->post('/updates/'.rawurlencode($this->id).'/share', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
     /**
@@ -81,7 +89,9 @@ class Update
     {
         $body = (isset($options['body']) ? $options['body'] : array());
 
-        return $this->client->post("/updates/".rawurlencode($this->id)."/destroy", $body, $options);
+        $response = $this->client->post('/updates/'.rawurlencode($this->id).'/destroy', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
     /**
@@ -93,7 +103,9 @@ class Update
     {
         $body = (isset($options['body']) ? $options['body'] : array());
 
-        return $this->client->post("/updates/".rawurlencode($this->id)."/move_to_top", $body, $options);
+        $response = $this->client->post('/updates/'.rawurlencode($this->id).'/move_to_top', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
 }

@@ -26,9 +26,11 @@ class User
      */
     public function show(array $options = array())
     {
-        $body = (isset($options['body']) ? $options['body'] : array());
+        $body = (isset($options['query']) ? $options['query'] : array());
 
-        return $this->client->get("/user", $body, $options);
+        $response = $this->client->get('/user', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
     /**
@@ -38,9 +40,11 @@ class User
      */
     public function profiles(array $options = array())
     {
-        $body = (isset($options['body']) ? $options['body'] : array());
+        $body = (isset($options['query']) ? $options['query'] : array());
 
-        return $this->client->get("/profiles", $body, $options);
+        $response = $this->client->get('/profiles', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
     /**
@@ -48,7 +52,7 @@ class User
      * '/updates/create' POST
      *
      * @param $text The status update text.
-     * @param $profile_ids An array of profile id’s that the status update should be sent to. Invalid profile_id’s will be silently ignored.
+     * @param $profile_ids An array of profile id's that the status update should be sent to. Invalid profile_id's will be silently ignored.
      */
     public function createUpdate($text, $profile_ids, array $options = array())
     {
@@ -56,7 +60,9 @@ class User
         $body['text'] = $text;
         $body['profile_ids'] = $profile_ids;
 
-        return $this->client->post("/updates/create", $body, $options);
+        $response = $this->client->post('/updates/create', $body, $options);
+
+        return array('body' => $response['body'], 'headers' => $response['headers']);
     }
 
 }
