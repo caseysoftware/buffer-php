@@ -30,7 +30,7 @@ class User
 
         $response = $this->client->get('/user', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
     /**
@@ -44,7 +44,7 @@ class User
 
         $response = $this->client->get('/profiles', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
     /**
@@ -62,7 +62,7 @@ class User
 
         $response = $this->client->post('/updates/create', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
 }

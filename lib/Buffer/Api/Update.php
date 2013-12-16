@@ -33,7 +33,7 @@ class Update
 
         $response = $this->client->get('/updates/'.rawurlencode($this->id).'', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
     /**
@@ -47,7 +47,7 @@ class Update
 
         $response = $this->client->get('/updates/'.rawurlencode($this->id).'/interactions', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
     /**
@@ -63,7 +63,7 @@ class Update
 
         $response = $this->client->post('/updates/'.rawurlencode($this->id).'/update', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
     /**
@@ -77,7 +77,7 @@ class Update
 
         $response = $this->client->post('/updates/'.rawurlencode($this->id).'/share', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
     /**
@@ -91,7 +91,7 @@ class Update
 
         $response = $this->client->post('/updates/'.rawurlencode($this->id).'/destroy', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
     /**
@@ -105,7 +105,7 @@ class Update
 
         $response = $this->client->post('/updates/'.rawurlencode($this->id).'/move_to_top', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
 }

@@ -32,7 +32,7 @@ class Link
 
         $response = $this->client->get('/link/shares', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
 }

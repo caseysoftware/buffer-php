@@ -11,9 +11,6 @@ class AuthHandler
 {
     private $auth;
 
-    const HTTP_PASSWORD = 0;
-    const HTTP_TOKEN = 1;
-
     const URL_SECRET = 2;
     const URL_TOKEN = 3;
 
@@ -27,17 +24,16 @@ class AuthHandler
      */
     public function getAuthType()
     {
-        if (isset($this->auth['username']) && isset($this->auth['password'])) {
-            return self::HTTP_PASSWORD;
-        } else if (isset($this->auth['http_token'])) {
-            return self::HTTP_TOKEN;
-        } else if (isset($this->auth['client_id']) && isset($this->auth['client_secret'])) {
+
+        if (isset($this->auth['client_id']) && isset($this->auth['client_secret'])) {
             return self::URL_SECRET;
-        } else if (isset($this->auth['access_token'])) {
-            return self::URL_TOKEN;
-        } else {
-            return -1;
         }
+
+        if (isset($this->auth['access_token'])) {
+            return self::URL_TOKEN;
+        }
+
+        return -1;
     }
 
     public function onRequestBeforeSend(Event $event)
@@ -46,43 +42,22 @@ class AuthHandler
             return;
         }
 
-        switch ($this->getAuthType()) {
-            case self::HTTP_PASSWORD:
-                $this->httpPassword($event);
-                break;
+        $auth = $this->getAuthType();
+        $flag = false;
 
-            case self::HTTP_TOKEN:
-                $this->httpToken($event);
-                break;
-
-            case self::URL_SECRET:
-                $this->urlSecret($event);
-                break;
-
-            case self::URL_TOKEN:
-                $this->urlToken($event);
-                break;
-
-            default:
-                throw new \ErrorException('Unable to calculate authorization method. Please check.');
-                break;
+        if ($auth == self::URL_SECRET) {
+            $this->urlSecret($event);
+            $flag = true;
         }
-    }
 
-    /**
-     * Basic Authorization with username and password
-     */
-    public function httpPassword(Event $event)
-    {
-        $event['request']->setHeader('Authorization', sprintf('Basic %s', base64_encode($this->auth['username'] . ':' . $this->auth['password'])));
-    }
+        if ($auth == self::URL_TOKEN) {
+            $this->urlToken($event);
+            $flag = true;
+        }
 
-    /**
-     * Authorization with HTTP token
-     */
-    public function httpToken(Event $event)
-    {
-        $event['request']->setHeader('Authorization', sprintf('token %s', $this->auth['http_token']));
+        if (!$flag) {
+            throw new \ErrorException('Unable to calculate authorization method. Please check.');
+        }
     }
 
     /**

@@ -33,7 +33,7 @@ class Profile
 
         $response = $this->client->get('/profiles/'.rawurlencode($this->id).'', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
     /**
@@ -47,7 +47,7 @@ class Profile
 
         $response = $this->client->get('/profiles/'.rawurlencode($this->id).'/updates/pending', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
     /**
@@ -61,7 +61,7 @@ class Profile
 
         $response = $this->client->get('/profiles/'.rawurlencode($this->id).'/updates/sent', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
     /**
@@ -77,7 +77,7 @@ class Profile
 
         $response = $this->client->post('/profiles/'.rawurlencode($this->id).'/updates/reorder', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
     /**
@@ -91,7 +91,7 @@ class Profile
 
         $response = $this->client->post('/profiles/'.rawurlencode($this->id).'/updates/shuffle', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
 }

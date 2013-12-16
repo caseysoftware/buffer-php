@@ -30,7 +30,7 @@ class Info
 
         $response = $this->client->get('/info/configuration', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
 }

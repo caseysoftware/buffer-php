@@ -33,7 +33,7 @@ class Schedule
 
         $response = $this->client->get('/profiles/'.rawurlencode($this->id).'/schedules', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
     /**
@@ -49,7 +49,7 @@ class Schedule
 
         $response = $this->client->post('/profiles/'.rawurlencode($this->id).'/schedules/update', $body, $options);
 
-        return array('body' => $response['body'], 'headers' => $response['headers']);
+        return $response;
     }
 
 }
