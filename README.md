@@ -26,6 +26,10 @@ $ php composer.phar update
 
 > This package follows the `PSR-0` convention names for its classes, which means you can easily integrate these classes loading in your own autoloader.
 
+#### Versions
+
+Works with [ 5.4 / 5.5 ]
+
 ## Usage
 
 ```php
@@ -118,7 +122,7 @@ $info = $client->info();
 Returns an object with the current configuration that Buffer is using, including supported services, their icons and the varying limits of character and schedules.
 
 ```php
-$data = $info->show($options);
+$response = $info->show($options);
 ```
 
 ### Authenticated user api
@@ -134,7 +138,7 @@ $user = $client->user();
 Create one or more new status updates.
 
 ```php
-$data = $user->createUpdate($text, $profile_ids, $options);
+$response = $user->createUpdate($text, $profile_ids, $options);
 ```
 
 ##### List of user's social profiles (GET /profiles)
@@ -142,7 +146,7 @@ $data = $user->createUpdate($text, $profile_ids, $options);
 Returns an array of social media profiles connected to the authenticated users account.
 
 ```php
-$data = $user->profiles($options);
+$response = $user->profiles($options);
 ```
 
 ##### User information (GET /user)
@@ -150,7 +154,7 @@ $data = $user->profiles($options);
 Returns information about the authenticated user.
 
 ```php
-$data = $user->show($options);
+$response = $user->show($options);
 ```
 
 ### Links api
@@ -166,7 +170,7 @@ $link = $client->link();
 Returns an object with a the numbers of shares a link has had using Buffer.
 
 ```php
-$data = $link->shares($url, $options);
+$response = $link->shares($url, $options);
 ```
 
 ### Social profiles api
@@ -182,7 +186,7 @@ $profile = $client->profile($id);
 Returns an array of updates that are currently in the buffer for an individual social media profile.
 
 ```php
-$data = $profile->pending($options);
+$response = $profile->pending($options);
 ```
 
 ##### Edit profile's updates order (POST /profiles/:id/updates/reorder)
@@ -190,7 +194,7 @@ $data = $profile->pending($options);
 Edit the order at which statuses for the specified social media profile will be sent out of the buffer.
 
 ```php
-$data = $profile->reorder($order, $options);
+$response = $profile->reorder($order, $options);
 ```
 
 ##### List profile's sent updates (GET /profiles/:id/updates/sent)
@@ -198,7 +202,7 @@ $data = $profile->reorder($order, $options);
 Returns an array of updates that have been sent from the buffer for an individual social media profile.
 
 ```php
-$data = $profile->sent($options);
+$response = $profile->sent($options);
 ```
 
 ##### Get this social profile (GET /profiles/:id)
@@ -206,7 +210,7 @@ $data = $profile->sent($options);
 Returns details of the single specified social media profile.
 
 ```php
-$data = $profile->show($options);
+$response = $profile->show($options);
 ```
 
 ##### Shuffle profile's updates (POST /profiles/:id/updates/shuffle)
@@ -214,7 +218,7 @@ $data = $profile->show($options);
 Randomize the order at which statuses for the specified social media profile will be sent out of the buffer.
 
 ```php
-$data = $profile->shuffle($options);
+$response = $profile->shuffle($options);
 ```
 
 ### Posting schedules api
@@ -230,7 +234,7 @@ $schedule = $client->schedule($id);
 Returns details of the posting schedules associated with a social media profile.
 
 ```php
-$data = $schedule->list($options);
+$response = $schedule->list($options);
 ```
 
 ##### Update profile's posting schedules (POST /profiles/:id/schedules/update)
@@ -238,7 +242,7 @@ $data = $schedule->list($options);
 Set the posting schedules for the specified social media profile.
 
 ```php
-$data = $schedule->update($schedules, $options);
+$response = $schedule->update($schedules, $options);
 ```
 
 ### Social updates api
@@ -254,7 +258,7 @@ $update = $client->update($id);
 Permanently delete an existing status update.
 
 ```php
-$data = $update->destroy($options);
+$response = $update->destroy($options);
 ```
 
 ##### List interactions of the update (GET /updates/:id/interactions)
@@ -262,7 +266,7 @@ $data = $update->destroy($options);
 Returns the detailed information on individual interactions with the social media update such as favorites, retweets and likes.
 
 ```php
-$data = $update->interactions($options);
+$response = $update->interactions($options);
 ```
 
 ##### Share this update (POST /updates/:id/share)
@@ -270,7 +274,7 @@ $data = $update->interactions($options);
 Immediately shares a single pending update and recalculates times for updates remaining in the queue.
 
 ```php
-$data = $update->share($options);
+$response = $update->share($options);
 ```
 
 ##### Get this social update (GET /updates/:id)
@@ -278,7 +282,7 @@ $data = $update->share($options);
 Returns a single social media update.
 
 ```php
-$data = $update->show($options);
+$response = $update->show($options);
 ```
 
 ##### Move this update to top (POST /updates/:id/move_to_top)
@@ -286,7 +290,7 @@ $data = $update->show($options);
 Move an existing status update to the top of the queue and recalculate times for all updates in the queue. Returns the update with its new posting time.
 
 ```php
-$data = $update->top($options);
+$response = $update->top($options);
 ```
 
 ##### Edit this update (POST /updates/:id/update)
@@ -294,7 +298,7 @@ $data = $update->top($options);
 Edit an existing, individual status update.
 
 ```php
-$data = $update->update($text, $options);
+$response = $update->update($text, $options);
 ```
 
 ## Contributors
