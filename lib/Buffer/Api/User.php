@@ -7,7 +7,6 @@ use Buffer\HttpClient\HttpClient;
 /**
  * Returns authenticated user api instance.
  *
- * @param $client HttpClient Instance
  */
 class User
 {

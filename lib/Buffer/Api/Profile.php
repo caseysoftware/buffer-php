@@ -8,7 +8,6 @@ use Buffer\HttpClient\HttpClient;
  * Returns a social media profile api instance.
  *
  * @param $id Identifier of a social media profile
- * @param $client HttpClient Instance
  */
 class Profile
 {

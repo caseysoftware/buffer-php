@@ -8,7 +8,6 @@ use Buffer\HttpClient\HttpClient;
  * Returns scheduling api instance for social media profile.
  *
  * @param $id Identifier of a social media profile
- * @param $client HttpClient Instance
  */
 class Schedule
 {

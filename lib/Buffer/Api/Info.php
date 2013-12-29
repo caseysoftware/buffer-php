@@ -7,7 +7,6 @@ use Buffer\HttpClient\HttpClient;
 /**
  * Returns api instance to get auxilary information about Buffer useful when creating your app.
  *
- * @param $client HttpClient Instance
  */
 class Info
 {

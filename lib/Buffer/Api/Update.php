@@ -8,7 +8,6 @@ use Buffer\HttpClient\HttpClient;
  * Returns a social media update api instance.
  *
  * @param $id Identifier of a social media update
- * @param $client HttpClient Instance
  */
 class Update
 {

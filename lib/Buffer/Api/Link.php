@@ -7,7 +7,6 @@ use Buffer\HttpClient\HttpClient;
 /**
  * Returns api instance to get information about links shared through Buffer.
  *
- * @param $client HttpClient Instance
  */
 class Link
 {
