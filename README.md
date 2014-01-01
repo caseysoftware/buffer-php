@@ -46,16 +46,16 @@ require_once 'vendor/autoload.php';
 ##### Without any authentication
 
 ```php
-$client = new \Buffer\Client();
+$client = new Buffer\Client();
 
 // If you need to send options
-$client = new \Buffer\Client(array(), $options);
+$client = new Buffer\Client(array(), $options);
 ```
 
 ##### Oauth acess token
 
 ```php
-$client = new \Buffer\Client('1a2b3', $options);
+$client = new Buffer\Client('1a2b3', $options);
 ```
 
 ##### Oauth client secret
@@ -63,7 +63,7 @@ $client = new \Buffer\Client('1a2b3', $options);
 ```php
 $auth = array('client_id' => '09a8b7', 'client_secret' => '1a2b3');
 
-$client = new \Buffer\Client($auth, $options);
+$client = new Buffer\Client($auth, $options);
 ```
 
 ### Response information
