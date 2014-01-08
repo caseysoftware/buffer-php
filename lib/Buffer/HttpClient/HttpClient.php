@@ -20,7 +20,7 @@ class HttpClient
     protected $options = array(
         'base'    => 'https://api.bufferapp.com',
         'api_version' => '1',
-        'user_agent' => 'alpaca/0.1.0 (https://github.com/pksunkara/alpaca)'
+        'user_agent' => 'alpaca/0.2.0 (https://github.com/pksunkara/alpaca)'
     );
 
     protected $headers = array();
@@ -44,7 +44,7 @@ class HttpClient
         }
 
         $client = new GuzzleClient($this->options['base'], $this->options);
-        $this->client  = $client;
+        $this->client = $client;
 
         $listener = array(new ErrorHandler(), 'onRequestError');
         $this->client->getEventDispatcher()->addListener('request.error', $listener);

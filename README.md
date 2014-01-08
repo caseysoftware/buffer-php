@@ -408,7 +408,7 @@ $response = $update->top($options);
 ```
 
 ## Contributors
-Here is a list of [Contributors]((https://github.com/alpaca-api/buffer-php/contributors)
+Here is a list of [Contributors](https://github.com/alpaca-api/buffer-php/contributors)
 
 ### TODO
 
