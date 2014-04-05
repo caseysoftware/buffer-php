@@ -6,7 +6,6 @@ use Buffer\HttpClient\HttpClient;
 
 /**
  * Returns api instance to get auxilary information about Buffer useful when creating your app.
- *
  */
 class Info
 {
@@ -20,8 +19,8 @@ class Info
 
     /**
      * Returns an object with the current configuration that Buffer is using, including supported services, their icons and the varying limits of character and schedules.
-     * '/info/configuration' GET
      *
+     * '/info/configuration' GET
      */
     public function show(array $options = array())
     {

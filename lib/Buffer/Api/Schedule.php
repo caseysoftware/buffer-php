@@ -23,8 +23,8 @@ class Schedule
 
     /**
      * Returns details of the posting schedules associated with a social media profile.
-     * '/profiles/:id/schedules' GET
      *
+     * '/profiles/:id/schedules' GET
      */
     public function list(array $options = array())
     {
@@ -37,6 +37,7 @@ class Schedule
 
     /**
      * Set the posting schedules for the specified social media profile.
+     *
      * '/profiles/:id/schedules/update' POST
      *
      * @param $schedules Each item in the array is an individual posting schedule which consists of days and times to match the format return by the above method.

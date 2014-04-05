@@ -23,8 +23,8 @@ class Update
 
     /**
      * Returns a single social media update.
-     * '/updates/:id' GET
      *
+     * '/updates/:id' GET
      */
     public function show(array $options = array())
     {
@@ -37,8 +37,8 @@ class Update
 
     /**
      * Returns the detailed information on individual interactions with the social media update such as favorites, retweets and likes.
-     * '/updates/:id/interactions' GET
      *
+     * '/updates/:id/interactions' GET
      */
     public function interactions(array $options = array())
     {
@@ -51,6 +51,7 @@ class Update
 
     /**
      * Edit an existing, individual status update.
+     *
      * '/updates/:id/update' POST
      *
      * @param $text The status update text.
@@ -67,8 +68,8 @@ class Update
 
     /**
      * Immediately shares a single pending update and recalculates times for updates remaining in the queue.
-     * '/updates/:id/share' POST
      *
+     * '/updates/:id/share' POST
      */
     public function share(array $options = array())
     {
@@ -81,8 +82,8 @@ class Update
 
     /**
      * Permanently delete an existing status update.
-     * '/updates/:id/destroy' POST
      *
+     * '/updates/:id/destroy' POST
      */
     public function destroy(array $options = array())
     {
@@ -95,8 +96,8 @@ class Update
 
     /**
      * Move an existing status update to the top of the queue and recalculate times for all updates in the queue. Returns the update with its new posting time.
-     * '/updates/:id/move_to_top' POST
      *
+     * '/updates/:id/move_to_top' POST
      */
     public function top(array $options = array())
     {

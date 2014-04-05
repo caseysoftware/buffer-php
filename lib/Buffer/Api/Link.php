@@ -6,7 +6,6 @@ use Buffer\HttpClient\HttpClient;
 
 /**
  * Returns api instance to get information about links shared through Buffer.
- *
  */
 class Link
 {
@@ -20,6 +19,7 @@ class Link
 
     /**
      * Returns an object with a the numbers of shares a link has had using Buffer.
+     *
      * '/link/shares' GET
      *
      * @param $url URL of the page for which the number of shares is requested.

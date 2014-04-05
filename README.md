@@ -80,7 +80,8 @@ $response->code;
 $response->headers;
 // >>> array('content-type' => 'text/html')
 ```
-##### HTML response
+
+##### HTML/TEXT response
 
 ```php
 $response->body;
@@ -134,8 +135,6 @@ The following options are available while calling a method of an api:
 
 Returns api instance to get auxilary information about Buffer useful when creating your app.
 
-
-
 ```php
 $info = $client->info();
 ```
@@ -143,8 +142,6 @@ $info = $client->info();
 ##### Services and configuration (GET /info/configuration)
 
 Returns an object with the current configuration that Buffer is using, including supported services, their icons and the varying limits of character and schedules.
-
-
 
 ```php
 $response = $info->show($options);
@@ -154,8 +151,6 @@ $response = $info->show($options);
 
 Returns authenticated user api instance.
 
-
-
 ```php
 $user = $client->user();
 ```
@@ -164,8 +159,6 @@ $user = $client->user();
 
 Returns information about the authenticated user.
 
-
-
 ```php
 $response = $user->show($options);
 ```
@@ -173,8 +166,6 @@ $response = $user->show($options);
 ##### List of user's social profiles (GET /profiles)
 
 Returns an array of social media profiles connected to the authenticated users account.
-
-
 
 ```php
 $response = $user->profiles($options);
@@ -199,8 +190,6 @@ $response = $user->createUpdate("This is an example update", array(
 ### Links api
 
 Returns api instance to get information about links shared through Buffer.
-
-
 
 ```php
 $link = $client->link();
@@ -234,8 +223,6 @@ $profile = $client->profile("519fc3ca4d5e93901900002f");
 
 Returns details of the single specified social media profile.
 
-
-
 ```php
 $response = $profile->show($options);
 ```
@@ -244,8 +231,6 @@ $response = $profile->show($options);
 
 Returns an array of updates that are currently in the buffer for an individual social media profile.
 
-
-
 ```php
 $response = $profile->pending($options);
 ```
@@ -253,8 +238,6 @@ $response = $profile->pending($options);
 ##### List profile's sent updates (GET /profiles/:id/updates/sent)
 
 Returns an array of updates that have been sent from the buffer for an individual social media profile.
-
-
 
 ```php
 $response = $profile->sent($options);
@@ -280,8 +263,6 @@ $response = $profile->reorder(array(
 
 Randomize the order at which statuses for the specified social media profile will be sent out of the buffer.
 
-
-
 ```php
 $response = $profile->shuffle($options);
 ```
@@ -301,8 +282,6 @@ $schedule = $client->schedule("519fc3ca4d5e93901900002f");
 ##### Get profile's posting schedules (GET /profiles/:id/schedules)
 
 Returns details of the posting schedules associated with a social media profile.
-
-
 
 ```php
 $response = $schedule->list($options);
@@ -349,8 +328,6 @@ $update = $client->update("4eb8565e0acb04bb82000004");
 
 Returns a single social media update.
 
-
-
 ```php
 $response = $update->show($options);
 ```
@@ -358,8 +335,6 @@ $response = $update->show($options);
 ##### List interactions of the update (GET /updates/:id/interactions)
 
 Returns the detailed information on individual interactions with the social media update such as favorites, retweets and likes.
-
-
 
 ```php
 $response = $update->interactions($options);
@@ -381,8 +356,6 @@ $response = $update->update("This is an edited update", $options);
 
 Immediately shares a single pending update and recalculates times for updates remaining in the queue.
 
-
-
 ```php
 $response = $update->share($options);
 ```
@@ -391,8 +364,6 @@ $response = $update->share($options);
 
 Permanently delete an existing status update.
 
-
-
 ```php
 $response = $update->destroy($options);
 ```
@@ -400,8 +371,6 @@ $response = $update->destroy($options);
 ##### Move this update to top (POST /updates/:id/move_to_top)
 
 Move an existing status update to the top of the queue and recalculate times for all updates in the queue. Returns the update with its new posting time.
-
-
 
 ```php
 $response = $update->top($options);

@@ -15,7 +15,6 @@ class Client
 
     /**
      * Returns api instance to get auxilary information about Buffer useful when creating your app.
-     *
      */
     public function info()
     {
@@ -24,7 +23,6 @@ class Client
 
     /**
      * Returns authenticated user api instance.
-     *
      */
     public function user()
     {
@@ -33,7 +31,6 @@ class Client
 
     /**
      * Returns api instance to get information about links shared through Buffer.
-     *
      */
     public function link()
     {

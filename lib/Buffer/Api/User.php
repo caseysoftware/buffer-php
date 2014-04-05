@@ -6,7 +6,6 @@ use Buffer\HttpClient\HttpClient;
 
 /**
  * Returns authenticated user api instance.
- *
  */
 class User
 {
@@ -20,8 +19,8 @@ class User
 
     /**
      * Returns information about the authenticated user.
-     * '/user' GET
      *
+     * '/user' GET
      */
     public function show(array $options = array())
     {
@@ -34,8 +33,8 @@ class User
 
     /**
      * Returns an array of social media profiles connected to the authenticated users account.
-     * '/profiles' GET
      *
+     * '/profiles' GET
      */
     public function profiles(array $options = array())
     {
@@ -48,6 +47,7 @@ class User
 
     /**
      * Create one or more new status updates.
+     *
      * '/updates/create' POST
      *
      * @param $text The status update text.
