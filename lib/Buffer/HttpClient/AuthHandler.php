@@ -39,7 +39,7 @@ class AuthHandler
     public function onRequestBeforeSend(Event $event)
     {
         if (empty($this->auth)) {
-            return;
+            throw new \ErrorException('Server requires authentication to proceed further. Please check');
         }
 
         $auth = $this->getAuthType();

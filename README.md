@@ -43,19 +43,12 @@ require_once 'vendor/autoload.php';
 
 ### Build a client
 
-##### Without any authentication
-
-```php
-$client = new Buffer\Client();
-
-// If you need to send options
-$client = new Buffer\Client(array(), $options);
-```
+__Using this api without authentication gives an error__
 
 ##### Oauth acess token
 
 ```php
-$client = new Buffer\Client('1a2b3', $options);
+$client = new Buffer\Client('1a2b3', $clientOptions);
 ```
 
 ##### Oauth client secret
@@ -63,50 +56,7 @@ $client = new Buffer\Client('1a2b3', $options);
 ```php
 $auth = array('client_id' => '09a8b7', 'client_secret' => '1a2b3');
 
-$client = new Buffer\Client($auth, $options);
-```
-
-### Response information
-
-```php
-$response = $client->klass('args')->method('args');
-
-$response->body;
-// >>> 'Hello world!'
-
-$response->code;
-// >>> 200
-
-$response->headers;
-// >>> array('content-type' => 'text/html')
-```
-
-##### HTML/TEXT response
-
-```php
-$response->body;
-// >>> 'The username is pksunkara!'
-```
-
-##### JSON response
-
-```php
-$response->body;
-// >>> array('user' => 'pksunkara')
-```
-
-### Request body information
-
-##### RAW request
-
-```php
-$body = 'username=pksunkara';
-```
-
-##### FORM request
-
-```php
-$body = array('user' => 'pksunkara');
+$client = new Buffer\Client($auth, $clientOptions);
 ```
 
 ### Client Options
@@ -120,6 +70,29 @@ The following options are available while instantiating a client:
  * __request_type__: Default format of the request body
  * __response_type__: Default format of the response (to be used in url suffix)
 
+### Response information
+
+__All the callbacks provided to an api call will recieve the response as shown below__
+
+```php
+$response = $client->klass('args')->method('args', $methodOptions);
+
+$response->code;
+// >>> 200
+
+$response->headers;
+// >>> array('x-server' => 'apache')
+```
+
+##### JSON response
+
+When the response sent by server is __json__, it is decoded into an array
+
+```php
+$response->body;
+// >>> array('user' => 'pksunkara')
+```
+
 ### Method Options
 
 The following options are available while calling a method of an api:
@@ -130,6 +103,28 @@ The following options are available while calling a method of an api:
  * __body__: Body of the request
  * __request_type__: Format of the request body
  * __response_type__: Format of the response (to be used in url suffix)
+
+### Request body information
+
+Set __request_type__ in options to modify the body accordingly
+
+##### RAW request
+
+When the value is set to __raw__, don't modify the body at all.
+
+```php
+$body = 'username=pksunkara';
+// >>> 'username=pksunkara'
+```
+
+##### FORM request
+
+When the value is set to __form__, urlencode the body.
+
+```php
+$body = array('user' => 'pksunkara');
+// >>> 'user=pksunkara'
+```
 
 ### Information api
 
